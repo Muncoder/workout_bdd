@@ -9,6 +9,22 @@
   </head>
 
   <body>
-    <%= yield %>
+	<header>
+		<%= render "shared/header" %>
+	</header>
+
+	<main>
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, msg, class: "alert alert-#{name}" %>
+		<% end %>
+
+		<%= yield %>		
+	</main>
+
+	<footer>
+		<%= render "shared/footer" %>
+	</footer>
+
+
   </body>
 </html>
