@@ -16,8 +16,12 @@
 		<%= f.label :body %>
 		<%= f.text_area :body, class: "form-control" %>
 	</div>
-
-	<%= f.submit 'Create Article', class: "btn btn-primary" %>
+	
+	<% if params[:action] == "new" %>
+		<%= f.submit 'Create Article', class: "btn btn-primary" %>
+	<% else %>
+		<%= f.submit 'Update Article', class: "btn btn-primary" %>
+	<% end %>
 
 
 <% end %>
