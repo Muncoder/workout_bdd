@@ -31,4 +31,6 @@ RSpec.feature "Creating Articles" do
 		expect(page).to have_content("Body can't be blank")
 	end
 
+	
+
 end
