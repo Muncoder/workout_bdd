@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :products do
+  	get 'delete'
+  end
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
     devise_for :users
 
 	resources :articles
