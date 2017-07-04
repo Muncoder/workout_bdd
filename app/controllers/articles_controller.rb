@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+	before_action :authenticate_user!, only: [:new, :create]
 
 	def index
 		@articles = Article.all.order("created_at DESC")
@@ -9,7 +10,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
-		@article = Article.new(article_params)
+		@article = current_user.articles.build(article_params)
 
 		if @article.save
 			flash[:alert] = "Article has been created"
@@ -50,7 +51,7 @@ class ArticlesController < ApplicationController
 
 	private
 		def article_params
-			params.require(:article).permit(:title, :body)
+			params.require(:article).permit(:title, :body, :user_id)
 		end
 
 end
